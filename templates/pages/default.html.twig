@@ -1,7 +1,15 @@
 {% extends "base.html.twig" %}
 
 {% block content %}
-    <h1>{{ content.title }}</h1>
-
-    {{ content.article|raw }}
+    <div class="container">
+        <article>
+            <h1 class="mb-5">{{ content.title }}</h1>
+            {% for item in content.blocks %}
+                <h2 class="mb-3">{{ item.title }}</h2>
+               {{ dump(item) }}
+                <p>{{ item.description|raw }}</p>
+                <img src="{{ item.image.url }}" alt="{{ item.image.title }}">
+            {% endfor %}
+        </article>
+    </div>
 {% endblock %}
