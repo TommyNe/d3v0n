@@ -83,7 +83,7 @@
                             </property>
                         </properties>
                     </type>
-                    <type name="text">
+                    <type name="text_date">
                         <properties>
                             <property name="title" type="text_line">
                                 <meta>
@@ -102,6 +102,22 @@
                                     <title lang="de">Datum</title>
                                 </meta>
                             </property>
+                        </properties>
+                    </type>
+                    <type name="text">
+                        <properties>
+                            <property name="title" type="text_line">
+                                <meta>
+                                    <title lang="de">Titel</title>
+                                </meta>
+                            </property>
+
+                            <property name="description" type="text_editor">
+                                <meta>
+                                    <title lang="de">Inhalt</title>
+                                </meta>
+                            </property>
+
                         </properties>
                     </type>
                 </types>

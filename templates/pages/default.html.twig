@@ -6,9 +6,14 @@
             <h1 class="mb-5">{{ content.title }}</h1>
             {% for item in content.blocks %}
                 <h2 class="mb-3">{{ item.title }}</h2>
-               {{ dump(item) }}
+                {{ dump(item) }}
+                {% if item.datetime is defined %}
+                    <p class="blockquote-footer">{{ item.datetime|format_datetime('short', 'none', locale='de') }}</p>
+                {% endif %}
+                {% if item.image is defined %}
+                    <img src="{{ item.image.url }}" alt="{{ item.image.title }}" width="200px">
+                {% endif %}
                 <p>{{ item.description|raw }}</p>
-                <img src="{{ item.image.url }}" alt="{{ item.image.title }}">
             {% endfor %}
         </article>
     </div>

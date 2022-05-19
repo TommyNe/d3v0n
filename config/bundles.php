@@ -45,4 +45,5 @@ return [
     Sulu\Bundle\ActivityBundle\SuluActivityBundle::class => ['all' => true],
     Sulu\Bundle\TrashBundle\SuluTrashBundle::class => ['all' => true],
     Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
+    Twig\Extra\TwigExtraBundle\TwigExtraBundle::class => ['all' => true],
 ];
