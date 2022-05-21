@@ -6,7 +6,6 @@
             <h1 class="mb-5">{{ content.title }}</h1>
             {% for item in content.blocks %}
                 <h2 class="mb-3">{{ item.title }}</h2>
-                {{ dump(item) }}
                 {% if item.datetime is defined %}
                     <p class="blockquote-footer">{{ item.datetime|format_datetime('short', 'none', locale='de') }}</p>
                 {% endif %}
