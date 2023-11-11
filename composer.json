@@ -25,7 +25,7 @@
         "chat": "https://sulu.io/services-and-support#chat"
     },
     "require": {
-        "php": "^7.2 || ^8.0",
+        "php": "^8.0 || ^8.1 || ^8.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "dantleech/phpcr-migrations-bundle": "^1.2",
@@ -107,7 +107,8 @@
             "composer/package-versions-deprecated": true,
             "symfony/flex": true,
             "symfony/runtime": true,
-            "symfony/thanks": true
+            "symfony/thanks": true,
+            "php-http/discovery": true
         },
         "optimize-autoloader": true,
         "sort-packages": true
