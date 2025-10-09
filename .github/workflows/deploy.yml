@@ -14,7 +14,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/d3v0n
+  IMAGE_NAME: ghcr.io/tommyne/d3v0n
   CONTEXT_NAME: production
 
 jobs:
