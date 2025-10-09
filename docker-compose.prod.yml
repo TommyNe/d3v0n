@@ -4,7 +4,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=web"
-      - "traefik.http.routers.d3v0n.rule=Host(`www.d3v0n.de`) || Host(`d3v0n.de`) || Host(`d3v0n.org`) || Host(`www.d3v0n.org`)"
+      - "traefik.http.routers.d3v0n.rule=Host(`www.d3v0n.de`) || Host(`d3v0n.de`)"
       - "traefik.http.routers.d3v0n.entrypoints=websecure"
       - "traefik.http.routers.d3v0n.tls.certresolver=le"
       - "traefik.http.routers.d3v0n.priority=100"
