@@ -9,7 +9,7 @@ services:
       - "traefik.http.routers.d3v0n.tls.certresolver=le"
       - "traefik.http.routers.d3v0n.priority=100"
       - "traefik.http.routers.d3v0n.service=d3v0n"
-      - "traefik.http.services.d3v0n.loadbalancer.server.port=8000"
+      - "traefik.http.services.d3v0n.loadbalancer.server.port=80"
     # zum Debuggen der Unit-Control-API:
     # - "8443:8443"
     networks:
