@@ -14,7 +14,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  IMAGE_NAME: ghcr.io/tommyne/d3v0n
+  IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/d3v0n
   CONTEXT_NAME: production
 
 jobs:
@@ -28,8 +28,8 @@ jobs:
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
-          username: ${{ secrets.GHCR_USERNAME }}
-          password: ${{ secrets.GHCR_TOKEN }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and Push Docker image
         uses: docker/build-push-action@v5
