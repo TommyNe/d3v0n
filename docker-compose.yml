@@ -1,0 +1,7 @@
+services:
+  web:
+    build: .
+    ports:
+      - "80:80"
+    # zum Debuggen der Unit-Control-API:
+    # - "8443:8443"

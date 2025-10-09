@@ -1,0 +1,82 @@
+name: Build and Deploy to Server via GHCR
+
+on:
+  workflow_run:
+    workflows: ["CI/CD Pipeline"]
+    types:
+      - completed
+
+env:
+  IMAGE_NAME: ghcr.io/tommyne/d3v0n
+  CONTEXT_NAME: production
+
+jobs:
+  build-and-push:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ secrets.GHCR_USERNAME }}
+          password: ${{ secrets.GHCR_TOKEN }}
+
+      - name: Build and Push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          target: prod
+          tags: |
+            ${{ env.IMAGE_NAME }}:latest
+            ${{ env.IMAGE_NAME }}:${{ github.sha }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build-and-push
+    steps:
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.D3V0N_KEY }}
+
+      - name: Add server to known_hosts
+        run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create Docker context
+        run: |
+          docker context rm ${{ env.CONTEXT_NAME }} || true
+          docker context create ${{ env.CONTEXT_NAME }} \
+            --docker "host=ssh://${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}"
+          docker context use ${{ env.CONTEXT_NAME }}
+
+      - name: Show Docker contexts (debug)
+        run: docker context ls
+
+      - name: Login to GHCR on remote
+        run: |
+          docker --context ${{ env.CONTEXT_NAME }} login ghcr.io \
+            -u ${{ secrets.GHCR_USERNAME }} -p ${{ secrets.GHCR_TOKEN }}
+
+      - name: Check DOCKER_HOST
+        run: |
+          echo "DOCKER_HOST=$DOCKER_HOST"
+          docker context inspect ${{ env.CONTEXT_NAME }}
+
+      - name: Test docker context connection
+        run: docker --context ${{ env.CONTEXT_NAME }} info
+
+      - name: Docker Compose deploy via context
+        run: |
+          unset DOCKER_HOST DOCKER_CONTEXT
+          docker --context ${{ env.CONTEXT_NAME }} compose -f docker-compose.prod.yaml --project-name etwah pull
+          docker --context ${{ env.CONTEXT_NAME }} compose -f docker-compose.prod.yaml --project-name etwah up -d --force-recreate --remove-orphans
+          docker context rm -f ${{ env.CONTEXT_NAME }}
+

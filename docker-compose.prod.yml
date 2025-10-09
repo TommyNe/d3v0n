@@ -1,0 +1,14 @@
+services:
+  web:
+    image: ghcr.io/tommyne/d3v0n:latest
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=web"
+      - "traefik.http.routers.tinnen-backend.rule=Host(`www.d3v0n.de`) || Host(`d3v0n.de`) || Host(`d3v0n.org`) || Host(`www.d3v0n.org`)"
+      - "traefik.http.routers.tinnen-backend.entrypoints=websecure"
+      - "traefik.http.routers.tinnen-backend.tls.certresolver=le"
+      - "traefik.http.routers.tinnen-backend.priority=100"
+      - "traefik.http.routers.tinnen-backend.service=d3v0n"
+      - "traefik.http.services.tinnen-backend.loadbalancer.server.port=8000"
+    # zum Debuggen der Unit-Control-API:
+    # - "8443:8443"
