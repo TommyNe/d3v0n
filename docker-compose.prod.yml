@@ -1,5 +1,5 @@
 services:
-  web:
+  app:
     image: ghcr.io/tommyne/d3v0n:latest
     labels:
       - "traefik.enable=true"
@@ -12,3 +12,9 @@ services:
       - "traefik.http.services.tinnen-backend.loadbalancer.server.port=8000"
     # zum Debuggen der Unit-Control-API:
     # - "8443:8443"
+    networks:
+      - web
+
+networks:
+    web:
+      external: true
