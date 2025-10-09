@@ -2,8 +2,16 @@ name: Build and Deploy to Server via GHCR
 
 on:
  push:
-   branches:
-       - main
+   branches: [ main ]
+
+
+permissions:
+  contents: read
+  packages: write   # für GHCR Push
+
+concurrency:
+  group: d3v0n-${{ github.ref }}
+  cancel-in-progress: false
 
 env:
   IMAGE_NAME: ghcr.io/tommyne/d3v0n
