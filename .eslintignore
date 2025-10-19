@@ -1,0 +1,25 @@
+# 1️⃣ Vom TanStack Router generiert:
+src/routeTree.gen.ts
+**/routeTree.gen.ts
+
+# 2️⃣ Build- und Cache-Ordner:
+dist/
+node_modules/
+.vite/
+.eslintcache
+coverage/
+
+# 3️⃣ Konfig- und Meta-Dateien:
+vite.config.ts
+postcss.config.cjs
+tailwind.config.cjs
+# (optional – wenn du lieber nur Source linten willst)
+# jest.config.ts
+# vite-env.d.ts
+
+# 4️⃣ TypeScript temporär generierte Dateien:
+**/*.d.ts
+
+# 5️⃣ Tests oder Mockdaten (optional, je nach Projektstruktur)
+**/__tests__/
+**/__mocks__/

@@ -1,13 +1,12 @@
 name: Build and Deploy to Server via GHCR
 
 on:
- push:
-   branches: [ main ]
-
+  push:
+    branches: [main]
 
 permissions:
   contents: read
-  packages: write   # für GHCR Push
+  packages: write # für GHCR Push
 
 concurrency:
   group: d3v0n-${{ github.ref }}
@@ -84,4 +83,3 @@ jobs:
           docker --context ${{ env.CONTEXT_NAME }} compose -f docker-compose.prod.yml --project-name d3v0n pull
           docker --context ${{ env.CONTEXT_NAME }} compose -f docker-compose.prod.yml --project-name d3v0n up -d --force-recreate --remove-orphans
           docker context rm -f ${{ env.CONTEXT_NAME }}
-
