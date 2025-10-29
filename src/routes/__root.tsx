@@ -1,4 +1,4 @@
-import { Outlet, createRootRoute } from "@tanstack/react-router";
+import { Outlet, createRootRoute, Link } from "@tanstack/react-router";
 import { Container } from "../Components/Container.tsx";
 import { Logo } from "../Components/Logo.tsx";
 
@@ -13,13 +13,13 @@ function RootComponent() {
       <header className="sticky top-0 z-50 border-b border-white/5 bg-neutral-950/70 backdrop-blur supports-[backdrop-filter]:bg-neutral-950/50">
         <Container>
           <div className="flex h-16 items-center justify-between gap-4">
-            <a href="/" className="text-xl">
+            <Link to="/" className="text-xl">
               <Logo />
-            </a>
+            </Link>
             <nav className="hidden md:flex items-center gap-8 text-sm">
-              <a className="text-zinc-300 hover:text-white" href="/about">
+              <Link className="text-zinc-300 hover:text-white" to="/about">
                 Über mich
-              </a>
+              </Link>
               <a className="text-zinc-300 hover:text-white" href="#stack">
                 Tech‑Stack
               </a>
