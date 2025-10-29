@@ -21,11 +21,11 @@ function RouteComponent() {
               </h1>
 
               <p className="mt-4 text-base sm:text-lg text-zinc-300">
-                Hallo, ich bin Thomas, Softwareentwickler und ehemaliger
-                Metallbau Meister. Neben meinem Beruf programmiere ich aus
-                Leidenschaft – alle meine eigenen Projekte entstehen
-                ehrenamtlich oder für mich selbst, einfach weil ich Freude daran
-                habe, Ideen in funktionierende Anwendungen zu verwandeln.
+                Hallo, ich bin Thomas, Softwareentwickler. Neben meinem Beruf
+                programmiere ich aus Leidenschaft – alle meine eigenen Projekte
+                entstehen ehrenamtlich oder für mich selbst, einfach weil ich
+                Freude daran habe, Ideen in funktionierende Anwendungen zu
+                verwandeln.
               </p>
               <p className="mt-4 text-base sm:text-lg text-zinc-300">
                 Ich arbeite mit PHP (Laravel, Symfony), TypeScript, React, React
