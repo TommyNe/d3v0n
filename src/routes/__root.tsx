@@ -144,12 +144,12 @@ function RootComponent() {
               Rechte vorbehalten.
             </div>
             <div className="flex items-center gap-4 text-sm">
-              <a className="text-zinc-400 hover:text-white" href="#">
+              <Link className="text-zinc-400 hover:text-white" to="/impress">
                 Impressum
-              </a>
-              <a className="text-zinc-400 hover:text-white" href="#">
+              </Link>
+              <Link className="text-zinc-400 hover:text-white" to="/privacy">
                 Datenschutz
-              </a>
+              </Link>
             </div>
           </div>
         </Container>
