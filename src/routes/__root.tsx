@@ -25,15 +25,15 @@ function RootComponent() {
               <Link className="text-zinc-300 hover:text-white" to="/about">
                 Über mich
               </Link>
-              <a className="text-zinc-300 hover:text-white" href="#stack">
+              <Link className="text-zinc-300 hover:text-white" to="/techstack">
                 Tech‑Stack
-              </a>
+              </Link>
               <a className="text-zinc-300 hover:text-white" href="#agents">
                 AI Agents
               </a>
-              <a className="text-zinc-300 hover:text-white" href="#kontakt">
+              <Link className="text-zinc-300 hover:text-white" to="/contact">
                 Kontakt
-              </a>
+              </Link>
             </nav>
             <button
               type="button"
@@ -108,13 +108,13 @@ function RootComponent() {
               >
                 Über mich
               </Link>
-              <a
-                href="#stack"
+              <Link
+                to="/techstack"
                 className="rounded-md px-3 py-2 text-zinc-300 hover:bg-white/5 hover:text-white"
                 onClick={closeMenu}
               >
                 Tech‑Stack
-              </a>
+              </Link>
               <a
                 href="#agents"
                 className="rounded-md px-3 py-2 text-zinc-300 hover:bg-white/5 hover:text-white"
@@ -122,13 +122,13 @@ function RootComponent() {
               >
                 AI Agents
               </a>
-              <a
-                href="#kontakt"
+              <Link
+                to="/contact"
                 className="rounded-md px-3 py-2 text-zinc-300 hover:bg-white/5 hover:text-white"
                 onClick={closeMenu}
               >
                 Kontakt
-              </a>
+              </Link>
             </nav>
           </div>
         </div>

@@ -9,11 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TechstackRouteImport } from './routes/techstack'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ImpressRouteImport } from './routes/impress'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TechstackRoute = TechstackRouteImport.update({
+  id: '/techstack',
+  path: '/techstack',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
@@ -22,6 +29,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
 const ImpressRoute = ImpressRouteImport.update({
   id: '/impress',
   path: '/impress',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -38,39 +50,67 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
   '/impress': typeof ImpressRoute
   '/privacy': typeof PrivacyRoute
+  '/techstack': typeof TechstackRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
   '/impress': typeof ImpressRoute
   '/privacy': typeof PrivacyRoute
+  '/techstack': typeof TechstackRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
   '/impress': typeof ImpressRoute
   '/privacy': typeof PrivacyRoute
+  '/techstack': typeof TechstackRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/impress' | '/privacy'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/impress'
+    | '/privacy'
+    | '/techstack'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/impress' | '/privacy'
-  id: '__root__' | '/' | '/about' | '/impress' | '/privacy'
+  to: '/' | '/about' | '/contact' | '/impress' | '/privacy' | '/techstack'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/impress'
+    | '/privacy'
+    | '/techstack'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
   ImpressRoute: typeof ImpressRoute
   PrivacyRoute: typeof PrivacyRoute
+  TechstackRoute: typeof TechstackRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/techstack': {
+      id: '/techstack'
+      path: '/techstack'
+      fullPath: '/techstack'
+      preLoaderRoute: typeof TechstackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/privacy': {
       id: '/privacy'
       path: '/privacy'
@@ -83,6 +123,13 @@ declare module '@tanstack/react-router' {
       path: '/impress'
       fullPath: '/impress'
       preLoaderRoute: typeof ImpressRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -105,8 +152,10 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
   ImpressRoute: ImpressRoute,
   PrivacyRoute: PrivacyRoute,
+  TechstackRoute: TechstackRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
