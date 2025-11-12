@@ -13,6 +13,7 @@ import { Route as TechstackRouteImport } from './routes/techstack'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ImpressRouteImport } from './routes/impress'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AgentsRouteImport } from './routes/agents'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -36,6 +37,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AgentsRoute = AgentsRouteImport.update({
+  id: '/agents',
+  path: '/agents',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -50,6 +56,7 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/agents': typeof AgentsRoute
   '/contact': typeof ContactRoute
   '/impress': typeof ImpressRoute
   '/privacy': typeof PrivacyRoute
@@ -58,6 +65,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/agents': typeof AgentsRoute
   '/contact': typeof ContactRoute
   '/impress': typeof ImpressRoute
   '/privacy': typeof PrivacyRoute
@@ -67,6 +75,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/agents': typeof AgentsRoute
   '/contact': typeof ContactRoute
   '/impress': typeof ImpressRoute
   '/privacy': typeof PrivacyRoute
@@ -77,16 +86,25 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/agents'
     | '/contact'
     | '/impress'
     | '/privacy'
     | '/techstack'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/impress' | '/privacy' | '/techstack'
+  to:
+    | '/'
+    | '/about'
+    | '/agents'
+    | '/contact'
+    | '/impress'
+    | '/privacy'
+    | '/techstack'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/agents'
     | '/contact'
     | '/impress'
     | '/privacy'
@@ -96,6 +114,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AgentsRoute: typeof AgentsRoute
   ContactRoute: typeof ContactRoute
   ImpressRoute: typeof ImpressRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -132,6 +151,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/agents': {
+      id: '/agents'
+      path: '/agents'
+      fullPath: '/agents'
+      preLoaderRoute: typeof AgentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -152,6 +178,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AgentsRoute: AgentsRoute,
   ContactRoute: ContactRoute,
   ImpressRoute: ImpressRoute,
   PrivacyRoute: PrivacyRoute,
