@@ -1,9 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Container } from "../Components/Container";
 import { Card } from "../Components/Card.tsx";
-import { IconSpark } from "../Components/IconSpark.tsx";
-import { IconLightning } from "../Components/IconLightning.tsx";
+import { DjkTinnen } from "../Components/DjkTinnen.tsx";
+import { Etwah } from "../Components/Etwah.tsx";
 import { IconNote } from "../Components/IconNote.tsx";
+import { Speisewelt } from "../Components/Speisewelt.tsx";
 
 export const Route = createFileRoute("/")({
   component: RouteComponent,
@@ -51,7 +52,7 @@ function RouteComponent() {
           </h2>
           <div className="grid gap-6 md:grid-cols-2">
             <Card
-              icon={<IconSpark />}
+              icon={<IconNote />}
               title="Dorf App Tinnen"
               subtitle="React Native · Expo · Laravel · PostgreSQL · FilamentPHP"
             >
@@ -59,7 +60,7 @@ function RouteComponent() {
               Vereinsleben, Push‑Benachrichtigungen & Deep‑Links.
             </Card>
             <Card
-              icon={<IconLightning />}
+              icon={<Etwah />}
               title="ETWAH — Pfarreiengemeinschaft Haren"
               subtitle="Symfony · Redis · MySQL · easyAdminBundle"
             >
@@ -67,7 +68,7 @@ function RouteComponent() {
               Redis, flexible Redaktions‑Workflows; Raumbuchungen.
             </Card>
             <Card
-              icon={<IconNote />}
+              icon={<Speisewelt />}
               title="Speisewelt App"
               subtitle="React Native · Expo"
             >
@@ -75,7 +76,7 @@ function RouteComponent() {
               Speisekarten.
             </Card>
             <Card
-              icon={<IconLightning />}
+              icon={<DjkTinnen />}
               title="Vereinsseite des DJK Tinnen"
               subtitle="Symfony · MySQL · Twig"
             >
