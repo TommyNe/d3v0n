@@ -216,13 +216,14 @@ function RootComponent() {
               >
                 Tech-Stack
               </Link>
-              <a
-                href="#agents"
-                className="rounded-md px-3 py-2 text-zinc-300 hover:bg-white/5 hover:text-white"
+              <Link
+                to="/agent"
+                className={`rounded-md px-3 py-2 ${pathname === "/contact" ? "bg-white/10 text-white" : "text-zinc-300 hover:bg-white/5 hover:text-white"}`}
                 onClick={closeMenu}
+                aria-current={pathname === "/agent" ? "page" : undefined}
               >
                 AI Agents
-              </a>
+              </Link>
               <Link
                 to="/contact"
                 className={`rounded-md px-3 py-2 ${pathname === "/contact" ? "bg-white/10 text-white" : "text-zinc-300 hover:bg-white/5 hover:text-white"}`}
