@@ -217,7 +217,7 @@ function RootComponent() {
                 Tech-Stack
               </Link>
               <Link
-                to="/agent"
+                to="/agents"
                 className={`rounded-md px-3 py-2 ${pathname === "/contact" ? "bg-white/10 text-white" : "text-zinc-300 hover:bg-white/5 hover:text-white"}`}
                 onClick={closeMenu}
                 aria-current={pathname === "/agent" ? "page" : undefined}
